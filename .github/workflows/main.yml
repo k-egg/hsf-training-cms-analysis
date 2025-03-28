@@ -16,7 +16,7 @@ jobs:
         experimental: [false]
         include:
           - version: latest
-          - experimental: true
+            experimental: true
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
