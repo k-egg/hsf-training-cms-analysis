@@ -7,10 +7,16 @@ jobs:
       - run: echo hello world
   build_skim:
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
     container: rootproject/root:${{ matrix.version }}
     strategy:
+      fail-fast: false
       matrix:
-        version: [6.26.10-conda, latest]
+        version: [6.26.10-conda]
+        experimental: [false]
+        include:
+          - version: latest
+          - experimental: true
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
